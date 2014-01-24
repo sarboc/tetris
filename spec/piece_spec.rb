@@ -82,4 +82,10 @@ describe PieceI do
       piece.positions.length.should == 2
     end
   end
+
+  describe "rotate" do
+    it "should choose the next piece in the pieces array"
+
+    it "should update the current rotation"
+  end
 end

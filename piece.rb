@@ -18,8 +18,11 @@ class Piece
     # set our change to 1 if moving right, -1 if moving left
     change = direction == "right" ? 1 : -1
 
+    # add our current position to the change
     new_x = @x_position + change
 
+    # unless our new position would be less than 0 or larger than the max_x, we can move
+    # if it is outside of those bounds, raise an error
     unless new_x < 0 || new_x > @max_x
       @x_position = new_x
     else

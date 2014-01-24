@@ -28,14 +28,6 @@ describe Board do
       board.full_row.should == full_row
     end
 
-    it "should have an empty row equal to the width" do
-      board.should respond_to(:empty_row)
-
-      blank = ""
-      width.times { blank += " " }
-      board.empty_row.should == blank
-    end
-
     it "should have rows" do
       board.should respond_to(:rows)
     end
@@ -73,6 +65,22 @@ describe Board do
       board.rows[1][0].should == "X"
       board.rows[1][1].should == "X"
     end
+
+    it "should add the piece to the proper column (x value)" do
+      piece.move("right")
+      piece.move("right")
+      board.place(piece)
+      board.rows[0][0].should == " "
+      board.rows[1][1].should == " "
+      board.rows[0][2].should == "X"
+      board.rows[1][3].should == "X"
+    end
+
+    it "should be able to travel through a row with an opening big enough"
+
+    it "should be stopped by an almost complete row with no opening large enough for the piece"
+
+    it "should raise an error if there is no valid y value in the current column"
 
   end
 
