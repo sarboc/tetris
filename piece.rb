@@ -47,6 +47,7 @@ class PieceI < Piece
                     "X",
                     "X",
                     "X"] ]
+    update_max_x
   end
 
 end

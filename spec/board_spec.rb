@@ -1,10 +1,12 @@
 require "spec_helper"
 require_relative "../board"
+require_relative "../piece"
 
 describe Board do
   let(:width) { rand(4..20) }
   let(:height) { rand(4..20) }
   let(:board) { Board.new(width, height) }
+  let(:piece) { PieceO.new(board.width) }
 
   describe "initialize" do
     it "should have a width" do
@@ -17,17 +19,12 @@ describe Board do
       board.height.should == height
     end
 
-    it "should have a full space marker" do
-      board.should respond_to(:full_space_marker)
-    end
-
     it "should have a full row equal to the width" do
       board.should respond_to(:full_row)
       board.full_row.length.should == width
 
-      marker = board.full_space_marker
       full_row = ""
-      width.times { full_row += marker }
+      width.times { full_row += "X" }
       board.full_row.should == full_row
     end
 
@@ -66,6 +63,17 @@ describe Board do
       board.check_rows
       board.rows.length.should == height
     end
+  end
+
+  describe "place" do
+    it "should add the piece to the board" do
+      board.place(piece)
+      board.rows[0][0].should == "X"
+      board.rows[0][1].should == "X"
+      board.rows[1][0].should == "X"
+      board.rows[1][1].should == "X"
+    end
+
   end
 
 end
